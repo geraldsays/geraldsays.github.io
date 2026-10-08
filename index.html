@@ -32,17 +32,21 @@
         @keyframes pulseBadge { 0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 170, 0.1); } 50% { box-shadow: 0 0 25px rgba(0, 255, 170, 0.2); } }
         .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: #eaeaea; }
 
-        .hero { min-height: 100vh; display: flex; align-items: center; padding-top: 80px; position: relative; overflow: hidden; }
+        /* Hero — single column stack on ALL screens */
+        .hero { min-height: auto; padding: 120px 0 80px; position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0, 255, 170, 0.06), transparent 70%); top: -200px; right: -200px; border-radius: 50%; animation: pulseGlow 8s ease-in-out infinite; }
         .hero::after { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0, 200, 255, 0.05), transparent 70%); bottom: -100px; left: -100px; border-radius: 50%; animation: pulseGlow 10s ease-in-out infinite reverse; }
         @keyframes pulseGlow { 0%, 100% { transform: scale(1); opacity: 0.6; } 50% { transform: scale(1.2); opacity: 1; } }
-        .hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; position: relative; z-index: 1; }
+        .hero .container { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0; position: relative; z-index: 1; }
+
+        .hero-content { width: 100%; max-width: 900px; margin: 0 auto; }
         .hero-content h1 { font-size: 3.2rem; font-weight: 700; margin-bottom: 0.3rem; }
         .hero-content h1 span { background: linear-gradient(135deg, #00ffaa, #00cc88); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-        .hero-content .tagline { font-size: 1.2rem; color: #00ffaa; margin-bottom: 1.2rem; font-weight: 400; text-shadow: 0 0 20px rgba(0, 255, 170, 0.2); letter-spacing: 0.5px; }
+        .hero-content .tagline { font-size: 1.2rem; color: #00ffaa; margin-bottom: 1.5rem; font-weight: 400; text-shadow: 0 0 20px rgba(0, 255, 170, 0.2); letter-spacing: 0.5px; }
         .hero-content .tagline i { margin-right: 8px; }
 
-        .terminal-bio { background: #0a0a12; border: 1px solid rgba(0, 255, 170, 0.15); border-radius: 12px; padding: 1.2rem 1.5rem; font-family: 'Courier New', monospace; margin-bottom: 2rem; box-shadow: 0 0 40px rgba(0, 255, 170, 0.03); transition: border-color 0.3s; }
+        /* Terminal — full width, left-aligned text */
+        .terminal-bio { background: #0a0a12; border: 1px solid rgba(0, 255, 170, 0.15); border-radius: 12px; padding: 1.4rem 1.6rem; font-family: 'Courier New', monospace; margin: 0 auto 2rem; width: 100%; box-shadow: 0 0 40px rgba(0, 255, 170, 0.03); transition: border-color 0.3s; text-align: left; }
         .terminal-bio:hover { border-color: rgba(0, 255, 170, 0.3); }
         .terminal-bio .line { padding: 0.15rem 0; }
         .terminal-bio .prompt { color: #00ffaa; }
@@ -50,7 +54,7 @@
         .terminal-bio .highlight-text { color: #fff; }
         .terminal-bio .green { color: #00ffaa; }
 
-        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; }
+        .btn-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; margin-bottom: 2.5rem; }
         .btn { display: inline-block; padding: 0.8rem 2.2rem; border-radius: 50px; font-weight: 600; transition: all 0.3s; border: 2px solid transparent; cursor: pointer; font-size: 1rem; }
         .btn-primary { background: linear-gradient(135deg, #00ffaa, #00cc88); color: #0a0a12; border-color: #00ffaa; box-shadow: 0 0 25px rgba(0, 255, 170, 0.25); }
         .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 10px 35px rgba(0, 255, 170, 0.4); }
@@ -59,9 +63,9 @@
         .btn-resume { background: transparent; border-color: #4facfe; color: #4facfe; opacity: 0.6; cursor: not-allowed; }
         .btn-resume:hover { transform: none; }
 
-        .hero-image { display: flex; justify-content: center; align-items: center; }
-        .avatar-wrapper { width: 300px; height: 300px; border-radius: 50%; background: linear-gradient(135deg, #00ffaa, #00cc88, #00ffaa); padding: 5px; animation: float 5s ease-in-out infinite; box-shadow: 0 0 60px rgba(0, 255, 170, 0.15); }
-        .avatar { width: 100%; height: 100%; border-radius: 50%; background: #0a0a12; display: flex; align-items: center; justify-content: center; font-size: 6rem; color: #00ffaa; }
+        .hero-image { display: flex; justify-content: center; align-items: center; margin-top: 0.5rem; }
+        .avatar-wrapper { width: 220px; height: 220px; border-radius: 50%; background: linear-gradient(135deg, #00ffaa, #00cc88, #00ffaa); padding: 5px; animation: float 5s ease-in-out infinite; box-shadow: 0 0 60px rgba(0, 255, 170, 0.15); }
+        .avatar { width: 100%; height: 100%; border-radius: 50%; background: #0a0a12; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; color: #00ffaa; }
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-18px) rotate(2deg); } }
 
         section { padding: 5rem 0; }
@@ -120,26 +124,31 @@
         .footer-terminal { margin-top: 0.8rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #444; }
 
         @media (max-width: 900px) {
-            .hero .container { grid-template-columns: 1fr; text-align: center; }
-            .btn-group { justify-content: center; }
-            .avatar-wrapper { width: 220px; height: 220px; }
-            .avatar { font-size: 4.5rem; }
+            .hero { padding: 100px 0 60px; }
+            .hero-content h1 { font-size: 2.4rem; }
+            .hero-content .tagline { font-size: 1rem; }
+            .terminal-bio { font-size: 0.78rem; padding: 0.9rem 1rem; line-height: 1.6; }
+            .terminal-bio .output { padding-left: 1rem; white-space: normal; word-break: break-word; }
+            .avatar-wrapper { width: 160px; height: 160px; }
+            .avatar { font-size: 3.2rem; }
             .section-title::after { left: 50%; transform: translateX(-50%); }
             .section-title { display: block; text-align: center; }
             .section-sub { text-align: center; }
             .contact-info { justify-content: center; }
             .social-links { justify-content: center; }
-            .hero-content h1 { font-size: 2.6rem; }
-            .terminal-bio { text-align: left; font-size: 0.85rem; }
         }
+
         @media (max-width: 650px) {
             .nav-links { display: none; flex-direction: column; gap: 0.8rem; background: #12121f; padding: 1.5rem; border-radius: 16px; position: absolute; top: 70px; right: 1rem; width: 220px; border: 1px solid rgba(0, 255, 170, 0.08); }
             .nav-links.active { display: flex; }
             .hamburger { display: block; }
-            .hero-content h1 { font-size: 2.2rem; }
-            .hero-content .tagline { font-size: 1rem; }
-            .terminal-bio { font-size: 0.75rem; padding: 1rem; }
+            .hero-content h1 { font-size: 2rem; }
+            .hero-content .tagline { font-size: 0.95rem; }
+            .terminal-bio { font-size: 0.7rem; padding: 0.8rem; }
+            .terminal-bio .output { padding-left: 0.7rem; }
             .status-badge { font-size: 0.65rem; padding: 0.2rem 0.8rem; }
+            .container { padding: 0 1.2rem; }
+            .btn { padding: 0.7rem 1.6rem; font-size: 0.9rem; }
         }
     </style>
 </head>
@@ -175,42 +184,19 @@
                 </div>
 
                 <div class="terminal-bio">
-                    <div class="line">
-                        <span class="prompt">$</span> whoami
-                    </div>
-                    <div class="line">
-                        <span class="output">gerald@kernel-dev <span class="highlight-text">• Hardware &amp; Software • Kernel Builder • IT Consultant</span></span>
-                    </div>
-                    <div class="line" style="margin-top: 6px;">
-                        <span class="prompt">$</span> cat ~/skills.txt
-                    </div>
-                    <div class="line">
-                        <span class="output"><span class="green">▸</span> Android Kernel &amp; AOSP</span>
-                    </div>
-                    <div class="line">
-                        <span class="output"><span class="green">▸</span> Custom ROM Porting (Redmi / Xiaomi)</span>
-                    </div>
-                    <div class="line">
-                        <span class="output"><span class="green">▸</span> Web Apps &amp; Progressive Web Apps</span>
-                    </div>
-                    <div class="line">
-                        <span class="output"><span class="green">▸</span> Windows Programs (.NET/C#)</span>
-                    </div>
-                    <div class="line">
-                        <span class="output"><span class="green">▸</span> Bash Scripting &amp; Automation</span>
-                    </div>
-                    <div class="line">
-                        <span class="output"><span class="green">▸</span> VPS / VPN Solutions (WireGuard, OpenVPN)</span>
-                    </div>
-                    <div class="line">
-                        <span class="output"><span class="green">▸</span> <span style="color: #4facfe;">Laptop &amp; Mobile Hardware Repair (Component-Level)</span></span>
-                    </div>
-                    <div class="line" style="margin-top: 6px;">
-                        <span class="prompt">$</span> uptime
-                    </div>
-                    <div class="line">
-                        <span class="output">Building since 2010 • Still shipping 🔥</span>
-                    </div>
+                    <div class="line"><span class="prompt">$</span> whoami</div>
+                    <div class="line"><span class="output">gerald@kernel-dev <span class="highlight-text">• Hardware &amp; Software • Kernel Builder • IT Consultant</span></span></div>
+                    <div class="line" style="margin-top: 6px;"><span class="prompt">$</span> cat ~/skills.txt</div>
+                    <div class="line"><span class="output"><span class="green">▸</span> Android Kernel &amp; AOSP</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> Custom ROM Porting (Redmi / Xiaomi)</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> Web Apps &amp; Progressive Web Apps</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> Cloud Systems (Firebase, Firestore)</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> Windows Programs (.NET/C#)</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> Bash Scripting &amp; Automation</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> VPS / VPN Solutions (WireGuard, OpenVPN)</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> <span style="color: #4facfe;">Laptop &amp; Mobile Hardware Repair (Component-Level)</span></span></div>
+                    <div class="line" style="margin-top: 6px;"><span class="prompt">$</span> uptime</div>
+                    <div class="line"><span class="output">Building since 2010 • Still shipping 🔥</span></div>
                 </div>
 
                 <div class="btn-group">
@@ -219,6 +205,7 @@
                     <a href="#" class="btn btn-resume" onclick="return false;"><i class="fas fa-file-pdf"></i> Resume (soon)</a>
                 </div>
             </div>
+
             <div class="hero-image">
                 <div class="avatar-wrapper">
                     <div class="avatar">
@@ -260,6 +247,23 @@
                     <p>Live inventory management PWA deployed at Adjiringanor Health Center. Tracks 290+ items across 5 departments with real-time alerts, cloud sync, and Excel import.</p>
                     <span class="project-tag">HTML · PWA · Cloud Sync</span>
                     <a href="https://geraldsays.github.io/facility-stores" target="_blank" class="project-link">Live Demo →</a>
+                </div>
+
+                <div class="project-card">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <h3>Class 5A Classroom Manager</h3>
+                    <p>Cloud-based classroom management system for primary school teachers — live roster, daily attendance with one-tap "mark all present", grade tracking, and categorized student notes. Includes a read-only parent portal.</p>
+                    <span class="project-tag">Firebase · JavaScript · PWA</span>
+                    <a href="https://geraldsays.github.io/thecms" target="_blank" class="project-link">Teacher App →</a>
+                    <a href="https://geraldsays.github.io/parents" target="_blank" class="project-link" style="margin-left:6px;background:#0099ff;">Parent View →</a>
+                </div>
+
+                <div class="project-card">
+                    <i class="fas fa-cash-register"></i>
+                    <h3>GERALDSAYS POS</h3>
+                    <p>Point-of-sale web app for small retail shops. Product catalog, category filters, cart, and sales tracking with GH₵ pricing.</p>
+                    <span class="project-tag">HTML · PWA · Retail</span>
+                    <a href="https://geraldsays.github.io/thepos" target="_blank" class="project-link">Live Demo →</a>
                 </div>
 
                 <div class="project-card">
@@ -390,4 +394,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
