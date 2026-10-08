@@ -9,7 +9,7 @@
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a12; color: #eaeaea; line-height: 1.6; scroll-behavior: smooth; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: #0a0a12; color: #eaeaea; line-height: 1.6; scroll-behavior: smooth; transition: background 0.3s, color 0.3s; }
         a { text-decoration: none; color: inherit; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
         ::-webkit-scrollbar { width: 8px; }
@@ -17,7 +17,7 @@
         ::-webkit-scrollbar-thumb { background: #00ffaa; border-radius: 10px; }
         ::-webkit-scrollbar-thumb:hover { background: #00cc88; }
 
-        nav { position: fixed; top: 0; left: 0; width: 100%; background: rgba(10, 10, 18, 0.92); backdrop-filter: blur(10px); z-index: 100; padding: 0.8rem 0; border-bottom: 1px solid rgba(0, 255, 170, 0.15); }
+        nav { position: fixed; top: 0; left: 0; width: 100%; background: rgba(10, 10, 18, 0.92); backdrop-filter: blur(10px); z-index: 100; padding: 0.8rem 0; border-bottom: 1px solid rgba(0, 255, 170, 0.15); transition: background 0.3s, border-color 0.3s; }
         nav .container { display: flex; justify-content: space-between; align-items: center; }
         .logo { font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, #00ffaa, #00cc88, #00ffaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; letter-spacing: -0.5px; }
         .logo span { color: #00ffaa; -webkit-text-fill-color: #00ffaa; }
@@ -32,7 +32,10 @@
         @keyframes pulseBadge { 0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 170, 0.1); } 50% { box-shadow: 0 0 25px rgba(0, 255, 170, 0.2); } }
         .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: #eaeaea; }
 
-        /* Hero — single column stack on ALL screens */
+        /* Theme toggle button */
+        .theme-toggle { background: #12121f; border: 1px solid rgba(0, 255, 170, 0.15); border-radius: 50px; padding: 0.4rem 0.9rem; font-size: 0.85rem; color: #aaa; cursor: pointer; font-family: inherit; transition: all 0.3s; display: inline-flex; align-items: center; gap: 6px; margin-left: 0.8rem; }
+        .theme-toggle:hover { border-color: #00ffaa; color: #00ffaa; }
+
         .hero { min-height: auto; padding: 120px 0 80px; position: relative; overflow: hidden; }
         .hero::before { content: ''; position: absolute; width: 600px; height: 600px; background: radial-gradient(circle, rgba(0, 255, 170, 0.06), transparent 70%); top: -200px; right: -200px; border-radius: 50%; animation: pulseGlow 8s ease-in-out infinite; }
         .hero::after { content: ''; position: absolute; width: 400px; height: 400px; background: radial-gradient(circle, rgba(0, 200, 255, 0.05), transparent 70%); bottom: -100px; left: -100px; border-radius: 50%; animation: pulseGlow 10s ease-in-out infinite reverse; }
@@ -45,8 +48,7 @@
         .hero-content .tagline { font-size: 1.2rem; color: #00ffaa; margin-bottom: 1.5rem; font-weight: 400; text-shadow: 0 0 20px rgba(0, 255, 170, 0.2); letter-spacing: 0.5px; }
         .hero-content .tagline i { margin-right: 8px; }
 
-        /* Terminal — full width, left-aligned text */
-        .terminal-bio { background: #0a0a12; border: 1px solid rgba(0, 255, 170, 0.15); border-radius: 12px; padding: 1.4rem 1.6rem; font-family: 'Courier New', monospace; margin: 0 auto 2rem; width: 100%; box-shadow: 0 0 40px rgba(0, 255, 170, 0.03); transition: border-color 0.3s; text-align: left; }
+        .terminal-bio { background: #0a0a12; border: 1px solid rgba(0, 255, 170, 0.15); border-radius: 12px; padding: 1.4rem 1.6rem; font-family: 'Courier New', monospace; margin: 0 auto 2rem; width: 100%; box-shadow: 0 0 40px rgba(0, 255, 170, 0.03); transition: border-color 0.3s, background 0.3s; text-align: left; }
         .terminal-bio:hover { border-color: rgba(0, 255, 170, 0.3); }
         .terminal-bio .line { padding: 0.15rem 0; }
         .terminal-bio .prompt { color: #00ffaa; }
@@ -65,16 +67,16 @@
 
         .hero-image { display: flex; justify-content: center; align-items: center; margin-top: 0.5rem; }
         .avatar-wrapper { width: 220px; height: 220px; border-radius: 50%; background: linear-gradient(135deg, #00ffaa, #00cc88, #00ffaa); padding: 5px; animation: float 5s ease-in-out infinite; box-shadow: 0 0 60px rgba(0, 255, 170, 0.15); }
-        .avatar { width: 100%; height: 100%; border-radius: 50%; background: #0a0a12; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; color: #00ffaa; }
+        .avatar { width: 100%; height: 100%; border-radius: 50%; background: #0a0a12; display: flex; align-items: center; justify-content: center; font-size: 4.5rem; color: #00ffaa; transition: background 0.3s; }
         @keyframes float { 0%, 100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-18px) rotate(2deg); } }
 
-        section { padding: 5rem 0; }
+        section { padding: 5rem 0; transition: background 0.3s; }
         .section-title { font-size: 2.4rem; font-weight: 700; margin-bottom: 1rem; position: relative; display: inline-block; }
         .section-title::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 60px; height: 4px; background: linear-gradient(135deg, #00ffaa, #00cc88); border-radius: 4px; box-shadow: 0 0 20px rgba(0, 255, 170, 0.3); }
         .section-sub { color: #aaa; margin-bottom: 3rem; font-size: 1.1rem; }
 
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1.8rem; margin-top: 1rem; }
-        .skill-card { background: #12121f; padding: 1.8rem 1rem; border-radius: 16px; text-align: center; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s; border: 1px solid rgba(0, 255, 170, 0.08); }
+        .skill-card { background: #12121f; padding: 1.8rem 1rem; border-radius: 16px; text-align: center; transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s, background 0.3s; border: 1px solid rgba(0, 255, 170, 0.08); }
         .skill-card:hover { transform: translateY(-8px); border-color: #00ffaa; box-shadow: 0 0 30px rgba(0, 255, 170, 0.05); }
         .skill-card i { font-size: 2.8rem; color: #00ffaa; margin-bottom: 0.6rem; }
         .skill-card span { display: block; font-weight: 500; color: #ddd; }
@@ -86,7 +88,7 @@
         .skill-card.hardware:hover { border-color: #4facfe; }
 
         .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
-        .project-card { background: #12121f; padding: 2rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 255, 170, 0.06); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s; position: relative; overflow: hidden; }
+        .project-card { background: #12121f; padding: 2rem 1.5rem; border-radius: 20px; border: 1px solid rgba(0, 255, 170, 0.06); transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s, background 0.3s; position: relative; overflow: hidden; }
         .project-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; background: linear-gradient(90deg, #00ffaa, #00cc88); opacity: 0; transition: opacity 0.3s; }
         .project-card:hover::before { opacity: 1; }
         .project-card:hover { transform: translateY(-6px); border-color: #00ffaa; box-shadow: 0 0 40px rgba(0, 255, 170, 0.04); }
@@ -109,7 +111,7 @@
         .blog-card.coming-soon { opacity: 0.55; }
 
         .contact-info { display: flex; flex-wrap: wrap; gap: 2rem; margin-top: 1.5rem; }
-        .contact-item { display: flex; align-items: center; gap: 0.8rem; background: #12121f; padding: 0.8rem 1.8rem; border-radius: 60px; border: 1px solid rgba(0, 255, 170, 0.06); transition: border-color 0.3s, box-shadow 0.3s; }
+        .contact-item { display: flex; align-items: center; gap: 0.8rem; background: #12121f; padding: 0.8rem 1.8rem; border-radius: 60px; border: 1px solid rgba(0, 255, 170, 0.06); transition: border-color 0.3s, box-shadow 0.3s, background 0.3s; }
         .contact-item:hover { border-color: #00ffaa; box-shadow: 0 0 25px rgba(0, 255, 170, 0.05); }
         .contact-item i { font-size: 1.4rem; color: #00ffaa; }
         .contact-item a { color: #ddd; transition: color 0.3s; }
@@ -121,7 +123,7 @@
         .social-links a.soon { opacity: 0.35; cursor: not-allowed; }
         .social-links a.soon:hover { background: #12121f; color: #aaa; transform: none; box-shadow: none; }
 
-        footer { text-align: center; padding: 2.5rem 0; border-top: 1px solid rgba(0, 255, 170, 0.06); color: #666; font-size: 0.9rem; }
+        footer { text-align: center; padding: 2.5rem 0; border-top: 1px solid rgba(0, 255, 170, 0.06); color: #666; font-size: 0.9rem; transition: border-color 0.3s, color 0.3s; }
         footer i { color: #00ffaa; }
         footer .highlight { color: #00ffaa; }
         .footer-terminal { margin-top: 0.8rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #444; }
@@ -145,6 +147,7 @@
             .nav-links { display: none; flex-direction: column; gap: 0.8rem; background: #12121f; padding: 1.5rem; border-radius: 16px; position: absolute; top: 70px; right: 1rem; width: 220px; border: 1px solid rgba(0, 255, 170, 0.08); }
             .nav-links.active { display: flex; }
             .hamburger { display: block; }
+            .theme-toggle { padding: 0.3rem 0.7rem; font-size: 0.75rem; margin-left: 0; }
             .hero-content h1 { font-size: 2rem; }
             .hero-content .tagline { font-size: 0.95rem; }
             .terminal-bio { font-size: 0.7rem; padding: 0.8rem; }
@@ -153,6 +156,154 @@
             .container { padding: 0 1.2rem; }
             .btn { padding: 0.7rem 1.6rem; font-size: 0.9rem; }
         }
+
+        /* ============================================================
+           LIGHT THEME OVERRIDES
+           Layered on top — dark theme stays the default.
+           Only kicks in when html[data-theme="light"] is set.
+           ============================================================ */
+        [data-theme="light"] body {
+            background: #f4f6fb;
+            color: #1a1f36;
+        }
+        [data-theme="light"] nav {
+            background: rgba(244, 246, 251, 0.92);
+            border-bottom-color: rgba(0, 150, 110, 0.25);
+        }
+        [data-theme="light"] .logo {
+            background: linear-gradient(135deg, #009966, #007a52, #009966);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        [data-theme="light"] .logo span {
+            color: #009966;
+            -webkit-text-fill-color: #009966;
+        }
+        [data-theme="light"] .nav-links a { color: #4a5568; }
+        [data-theme="light"] .nav-links a:hover { color: #009966; }
+        [data-theme="light"] .nav-links a::after { background: #009966; box-shadow: 0 0 10px rgba(0, 150, 110, 0.4); }
+        [data-theme="light"] .status-badge {
+            background: rgba(0, 150, 110, 0.12);
+            border-color: #009966;
+            color: #009966;
+        }
+        [data-theme="light"] .status-badge .dot { background: #009966; }
+        [data-theme="light"] .hamburger { color: #1a1f36; }
+        [data-theme="light"] .theme-toggle { background: #ffffff; border-color: rgba(0, 150, 110, 0.25); color: #4a5568; }
+        [data-theme="light"] .theme-toggle:hover { border-color: #009966; color: #009966; }
+        [data-theme="light"] .hero-content h1 span {
+            background: linear-gradient(135deg, #009966, #007a52);
+            -webkit-background-clip: text;
+            background-clip: text;
+        }
+        [data-theme="light"] .hero-content .tagline {
+            color: #009966;
+            text-shadow: 0 0 20px rgba(0, 150, 110, 0.15);
+        }
+        [data-theme="light"] .terminal-bio {
+            background: #ffffff;
+            border-color: rgba(0, 150, 110, 0.25);
+            box-shadow: 0 0 40px rgba(0, 150, 110, 0.05);
+        }
+        [data-theme="light"] .terminal-bio:hover { border-color: rgba(0, 150, 110, 0.5); }
+        [data-theme="light"] .terminal-bio .prompt,
+        [data-theme="light"] .terminal-bio .green { color: #009966; }
+        [data-theme="light"] .terminal-bio .output { color: #4a5568; }
+        [data-theme="light"] .terminal-bio .highlight-text { color: #1a1f36; }
+        [data-theme="light"] .btn-primary {
+            background: linear-gradient(135deg, #009966, #007a52);
+            color: #ffffff;
+            border-color: #009966;
+            box-shadow: 0 0 25px rgba(0, 150, 110, 0.25);
+        }
+        [data-theme="light"] .btn-primary:hover { box-shadow: 0 10px 35px rgba(0, 150, 110, 0.35); }
+        [data-theme="light"] .btn-outline { border-color: #009966; color: #009966; }
+        [data-theme="light"] .btn-outline:hover { background: #009966; color: #ffffff; }
+        [data-theme="light"] .avatar { background: #f4f6fb; color: #009966; }
+        [data-theme="light"] section { background: #ffffff !important; }
+        [data-theme="light"] section:nth-of-type(even) { background: #eef0f7 !important; }
+        [data-theme="light"] .section-title::after {
+            background: linear-gradient(135deg, #009966, #007a52);
+            box-shadow: 0 0 20px rgba(0, 150, 110, 0.3);
+        }
+        [data-theme="light"] .section-sub { color: #4a5568; }
+        [data-theme="light"] .skill-card {
+            background: #f4f6fb;
+            border-color: rgba(0, 150, 110, 0.15);
+        }
+        [data-theme="light"] .skill-card:hover {
+            border-color: #009966;
+            box-shadow: 0 0 30px rgba(0, 150, 110, 0.08);
+        }
+        [data-theme="light"] .skill-card i { color: #009966; }
+        [data-theme="light"] .skill-card span { color: #1a1f36; }
+        [data-theme="light"] .skill-card.teaching {
+            border-color: rgba(2, 136, 209, 0.25);
+            background: linear-gradient(135deg, rgba(2, 136, 209, 0.06), transparent);
+        }
+        [data-theme="light"] .skill-card.teaching i { color: #0288d1; }
+        [data-theme="light"] .skill-card.hardware {
+            border-color: rgba(25, 118, 210, 0.25);
+            background: linear-gradient(135deg, rgba(25, 118, 210, 0.06), transparent);
+        }
+        [data-theme="light"] .skill-card.hardware i { color: #1976d2; }
+        [data-theme="light"] .project-card {
+            background: #f4f6fb;
+            border-color: rgba(0, 150, 110, 0.12);
+        }
+        [data-theme="light"] .project-card:hover {
+            border-color: #009966;
+            box-shadow: 0 0 40px rgba(0, 150, 110, 0.08);
+        }
+        [data-theme="light"] .project-card i { color: #009966; }
+        [data-theme="light"] .project-card h3 { color: #1a1f36; }
+        [data-theme="light"] .project-card p { color: #4a5568; }
+        [data-theme="light"] .project-tag {
+            background: rgba(0, 150, 110, 0.12);
+            color: #009966;
+            border-color: rgba(0, 150, 110, 0.25);
+        }
+        [data-theme="light"] .project-link {
+            background: #009966;
+            color: #ffffff;
+            border-color: #009966;
+        }
+        [data-theme="light"] .project-link:hover { background: #007a52; }
+        [data-theme="light"] .project-card.coming-soon i { color: #a0aec0; }
+        [data-theme="light"] .blog-card {
+            background: #f4f6fb;
+            border-color: rgba(0, 150, 110, 0.12);
+        }
+        [data-theme="light"] .blog-card:hover { border-color: #009966; }
+        [data-theme="light"] .blog-card .blog-date { color: #718096; }
+        [data-theme="light"] .blog-card h4 { color: #1a1f36; }
+        [data-theme="light"] .blog-card p { color: #4a5568; }
+        [data-theme="light"] .blog-card .read-more { color: #718096; }
+        [data-theme="light"] .contact-item {
+            background: #f4f6fb;
+            border-color: rgba(0, 150, 110, 0.12);
+        }
+        [data-theme="light"] .contact-item:hover { border-color: #009966; }
+        [data-theme="light"] .contact-item i { color: #009966; }
+        [data-theme="light"] .contact-item a { color: #1a1f36; }
+        [data-theme="light"] .contact-item a:hover { color: #009966; }
+        [data-theme="light"] .social-links a {
+            background: #f4f6fb;
+            border-color: rgba(0, 150, 110, 0.12);
+            color: #4a5568;
+        }
+        [data-theme="light"] .social-links a:hover {
+            background: #009966;
+            color: #ffffff;
+            box-shadow: 0 0 30px rgba(0, 150, 110, 0.3);
+        }
+        [data-theme="light"] footer {
+            border-top-color: rgba(0, 150, 110, 0.12);
+            color: #718096;
+        }
+        [data-theme="light"] footer i,
+        [data-theme="light"] footer .highlight { color: #009966; }
+        [data-theme="light"] .footer-terminal { color: #a0aec0; }
     </style>
 </head>
 <body>
@@ -170,6 +321,11 @@
                     <span class="status-badge">
                         <span class="dot"></span> Open to Collab
                     </span>
+                </li>
+                <li>
+                    <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">
+                        <i class="fas fa-sun"></i> <span id="themeLabel">Light</span>
+                    </button>
                 </li>
             </ul>
             <div class="hamburger" id="hamburger">
@@ -353,6 +509,32 @@
     </footer>
 
     <script>
+        // Theme toggle
+        const THEME_KEY = 'portfolio_theme';
+        const themeToggle = document.getElementById('themeToggle');
+        const themeLabel = document.getElementById('themeLabel');
+
+        function applyTheme(theme) {
+            if (theme === 'light') {
+                document.documentElement.setAttribute('data-theme', 'light');
+                themeLabel.textContent = 'Dark';
+                themeToggle.querySelector('i').className = 'fas fa-moon';
+            } else {
+                document.documentElement.removeAttribute('data-theme');
+                themeLabel.textContent = 'Light';
+                themeToggle.querySelector('i').className = 'fas fa-sun';
+            }
+        }
+
+        applyTheme(localStorage.getItem(THEME_KEY) || 'dark');
+
+        themeToggle.addEventListener('click', () => {
+            const current = localStorage.getItem(THEME_KEY) || 'dark';
+            const next = current === 'dark' ? 'light' : 'dark';
+            localStorage.setItem(THEME_KEY, next);
+            applyTheme(next);
+        });
+
         const hamburger = document.getElementById('hamburger');
         const navLinks = document.getElementById('navLinks');
 
@@ -391,4 +573,4 @@
         });
     </script>
 </body>
-</html>
+    </html>
