@@ -32,7 +32,6 @@
         @keyframes pulseBadge { 0%, 100% { box-shadow: 0 0 10px rgba(0, 255, 170, 0.1); } 50% { box-shadow: 0 0 25px rgba(0, 255, 170, 0.2); } }
         .hamburger { display: none; font-size: 1.8rem; cursor: pointer; color: #eaeaea; }
 
-        /* Theme toggle button */
         .theme-toggle { background: #12121f; border: 1px solid rgba(0, 255, 170, 0.15); border-radius: 50px; padding: 0.4rem 0.9rem; font-size: 0.85rem; color: #aaa; cursor: pointer; font-family: inherit; transition: all 0.3s; display: inline-flex; align-items: center; gap: 6px; margin-left: 0.8rem; }
         .theme-toggle:hover { border-color: #00ffaa; color: #00ffaa; }
 
@@ -127,6 +126,31 @@
         footer i { color: #00ffaa; }
         footer .highlight { color: #00ffaa; }
         .footer-terminal { margin-top: 0.8rem; font-family: 'Courier New', monospace; font-size: 0.8rem; color: #444; }
+        .footer-contact { margin-top: 0.8rem; font-size: 0.85rem; }
+
+        /* WhatsApp floating button */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
+            background: #25D366;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 20px rgba(37, 211, 102, 0.4);
+            z-index: 99;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 30px rgba(37, 211, 102, 0.6);
+        }
 
         @media (max-width: 900px) {
             .hero { padding: 100px 0 60px; }
@@ -155,154 +179,70 @@
             .status-badge { font-size: 0.65rem; padding: 0.2rem 0.8rem; }
             .container { padding: 0 1.2rem; }
             .btn { padding: 0.7rem 1.6rem; font-size: 0.9rem; }
+            .whatsapp-float { width: 50px; height: 50px; font-size: 26px; bottom: 16px; right: 16px; }
         }
 
-        /* ============================================================
-           LIGHT THEME OVERRIDES
-           Layered on top — dark theme stays the default.
-           Only kicks in when html[data-theme="light"] is set.
-           ============================================================ */
-        [data-theme="light"] body {
-            background: #f4f6fb;
-            color: #1a1f36;
-        }
-        [data-theme="light"] nav {
-            background: rgba(244, 246, 251, 0.92);
-            border-bottom-color: rgba(0, 150, 110, 0.25);
-        }
-        [data-theme="light"] .logo {
-            background: linear-gradient(135deg, #009966, #007a52, #009966);
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        [data-theme="light"] .logo span {
-            color: #009966;
-            -webkit-text-fill-color: #009966;
-        }
+        /* Light theme overrides */
+        [data-theme="light"] body { background: #f4f6fb; color: #1a1f36; }
+        [data-theme="light"] nav { background: rgba(244, 246, 251, 0.92); border-bottom-color: rgba(0, 150, 110, 0.25); }
+        [data-theme="light"] .logo { background: linear-gradient(135deg, #009966, #007a52, #009966); -webkit-background-clip: text; background-clip: text; }
+        [data-theme="light"] .logo span { color: #009966; -webkit-text-fill-color: #009966; }
         [data-theme="light"] .nav-links a { color: #4a5568; }
         [data-theme="light"] .nav-links a:hover { color: #009966; }
         [data-theme="light"] .nav-links a::after { background: #009966; box-shadow: 0 0 10px rgba(0, 150, 110, 0.4); }
-        [data-theme="light"] .status-badge {
-            background: rgba(0, 150, 110, 0.12);
-            border-color: #009966;
-            color: #009966;
-        }
+        [data-theme="light"] .status-badge { background: rgba(0, 150, 110, 0.12); border-color: #009966; color: #009966; }
         [data-theme="light"] .status-badge .dot { background: #009966; }
         [data-theme="light"] .hamburger { color: #1a1f36; }
         [data-theme="light"] .theme-toggle { background: #ffffff; border-color: rgba(0, 150, 110, 0.25); color: #4a5568; }
         [data-theme="light"] .theme-toggle:hover { border-color: #009966; color: #009966; }
-        [data-theme="light"] .hero-content h1 span {
-            background: linear-gradient(135deg, #009966, #007a52);
-            -webkit-background-clip: text;
-            background-clip: text;
-        }
-        [data-theme="light"] .hero-content .tagline {
-            color: #009966;
-            text-shadow: 0 0 20px rgba(0, 150, 110, 0.15);
-        }
-        [data-theme="light"] .terminal-bio {
-            background: #ffffff;
-            border-color: rgba(0, 150, 110, 0.25);
-            box-shadow: 0 0 40px rgba(0, 150, 110, 0.05);
-        }
+        [data-theme="light"] .hero-content h1 span { background: linear-gradient(135deg, #009966, #007a52); -webkit-background-clip: text; background-clip: text; }
+        [data-theme="light"] .hero-content .tagline { color: #009966; text-shadow: 0 0 20px rgba(0, 150, 110, 0.15); }
+        [data-theme="light"] .terminal-bio { background: #ffffff; border-color: rgba(0, 150, 110, 0.25); box-shadow: 0 0 40px rgba(0, 150, 110, 0.05); }
         [data-theme="light"] .terminal-bio:hover { border-color: rgba(0, 150, 110, 0.5); }
-        [data-theme="light"] .terminal-bio .prompt,
-        [data-theme="light"] .terminal-bio .green { color: #009966; }
+        [data-theme="light"] .terminal-bio .prompt, [data-theme="light"] .terminal-bio .green { color: #009966; }
         [data-theme="light"] .terminal-bio .output { color: #4a5568; }
         [data-theme="light"] .terminal-bio .highlight-text { color: #1a1f36; }
-        [data-theme="light"] .btn-primary {
-            background: linear-gradient(135deg, #009966, #007a52);
-            color: #ffffff;
-            border-color: #009966;
-            box-shadow: 0 0 25px rgba(0, 150, 110, 0.25);
-        }
+        [data-theme="light"] .btn-primary { background: linear-gradient(135deg, #009966, #007a52); color: #ffffff; border-color: #009966; box-shadow: 0 0 25px rgba(0, 150, 110, 0.25); }
         [data-theme="light"] .btn-primary:hover { box-shadow: 0 10px 35px rgba(0, 150, 110, 0.35); }
         [data-theme="light"] .btn-outline { border-color: #009966; color: #009966; }
         [data-theme="light"] .btn-outline:hover { background: #009966; color: #ffffff; }
         [data-theme="light"] .avatar { background: #f4f6fb; color: #009966; }
         [data-theme="light"] section { background: #ffffff !important; }
         [data-theme="light"] section:nth-of-type(even) { background: #eef0f7 !important; }
-        [data-theme="light"] .section-title::after {
-            background: linear-gradient(135deg, #009966, #007a52);
-            box-shadow: 0 0 20px rgba(0, 150, 110, 0.3);
-        }
+        [data-theme="light"] .section-title::after { background: linear-gradient(135deg, #009966, #007a52); box-shadow: 0 0 20px rgba(0, 150, 110, 0.3); }
         [data-theme="light"] .section-sub { color: #4a5568; }
-        [data-theme="light"] .skill-card {
-            background: #f4f6fb;
-            border-color: rgba(0, 150, 110, 0.15);
-        }
-        [data-theme="light"] .skill-card:hover {
-            border-color: #009966;
-            box-shadow: 0 0 30px rgba(0, 150, 110, 0.08);
-        }
+        [data-theme="light"] .skill-card { background: #f4f6fb; border-color: rgba(0, 150, 110, 0.15); }
+        [data-theme="light"] .skill-card:hover { border-color: #009966; box-shadow: 0 0 30px rgba(0, 150, 110, 0.08); }
         [data-theme="light"] .skill-card i { color: #009966; }
         [data-theme="light"] .skill-card span { color: #1a1f36; }
-        [data-theme="light"] .skill-card.teaching {
-            border-color: rgba(2, 136, 209, 0.25);
-            background: linear-gradient(135deg, rgba(2, 136, 209, 0.06), transparent);
-        }
+        [data-theme="light"] .skill-card.teaching { border-color: rgba(2, 136, 209, 0.25); background: linear-gradient(135deg, rgba(2, 136, 209, 0.06), transparent); }
         [data-theme="light"] .skill-card.teaching i { color: #0288d1; }
-        [data-theme="light"] .skill-card.hardware {
-            border-color: rgba(25, 118, 210, 0.25);
-            background: linear-gradient(135deg, rgba(25, 118, 210, 0.06), transparent);
-        }
+        [data-theme="light"] .skill-card.hardware { border-color: rgba(25, 118, 210, 0.25); background: linear-gradient(135deg, rgba(25, 118, 210, 0.06), transparent); }
         [data-theme="light"] .skill-card.hardware i { color: #1976d2; }
-        [data-theme="light"] .project-card {
-            background: #f4f6fb;
-            border-color: rgba(0, 150, 110, 0.12);
-        }
-        [data-theme="light"] .project-card:hover {
-            border-color: #009966;
-            box-shadow: 0 0 40px rgba(0, 150, 110, 0.08);
-        }
+        [data-theme="light"] .project-card { background: #f4f6fb; border-color: rgba(0, 150, 110, 0.12); }
+        [data-theme="light"] .project-card:hover { border-color: #009966; box-shadow: 0 0 40px rgba(0, 150, 110, 0.08); }
         [data-theme="light"] .project-card i { color: #009966; }
         [data-theme="light"] .project-card h3 { color: #1a1f36; }
         [data-theme="light"] .project-card p { color: #4a5568; }
-        [data-theme="light"] .project-tag {
-            background: rgba(0, 150, 110, 0.12);
-            color: #009966;
-            border-color: rgba(0, 150, 110, 0.25);
-        }
-        [data-theme="light"] .project-link {
-            background: #009966;
-            color: #ffffff;
-            border-color: #009966;
-        }
+        [data-theme="light"] .project-tag { background: rgba(0, 150, 110, 0.12); color: #009966; border-color: rgba(0, 150, 110, 0.25); }
+        [data-theme="light"] .project-link { background: #009966; color: #ffffff; border-color: #009966; }
         [data-theme="light"] .project-link:hover { background: #007a52; }
         [data-theme="light"] .project-card.coming-soon i { color: #a0aec0; }
-        [data-theme="light"] .blog-card {
-            background: #f4f6fb;
-            border-color: rgba(0, 150, 110, 0.12);
-        }
+        [data-theme="light"] .blog-card { background: #f4f6fb; border-color: rgba(0, 150, 110, 0.12); }
         [data-theme="light"] .blog-card:hover { border-color: #009966; }
         [data-theme="light"] .blog-card .blog-date { color: #718096; }
         [data-theme="light"] .blog-card h4 { color: #1a1f36; }
         [data-theme="light"] .blog-card p { color: #4a5568; }
         [data-theme="light"] .blog-card .read-more { color: #718096; }
-        [data-theme="light"] .contact-item {
-            background: #f4f6fb;
-            border-color: rgba(0, 150, 110, 0.12);
-        }
+        [data-theme="light"] .contact-item { background: #f4f6fb; border-color: rgba(0, 150, 110, 0.12); }
         [data-theme="light"] .contact-item:hover { border-color: #009966; }
         [data-theme="light"] .contact-item i { color: #009966; }
         [data-theme="light"] .contact-item a { color: #1a1f36; }
         [data-theme="light"] .contact-item a:hover { color: #009966; }
-        [data-theme="light"] .social-links a {
-            background: #f4f6fb;
-            border-color: rgba(0, 150, 110, 0.12);
-            color: #4a5568;
-        }
-        [data-theme="light"] .social-links a:hover {
-            background: #009966;
-            color: #ffffff;
-            box-shadow: 0 0 30px rgba(0, 150, 110, 0.3);
-        }
-        [data-theme="light"] footer {
-            border-top-color: rgba(0, 150, 110, 0.12);
-            color: #718096;
-        }
-        [data-theme="light"] footer i,
-        [data-theme="light"] footer .highlight { color: #009966; }
+        [data-theme="light"] .social-links a { background: #f4f6fb; border-color: rgba(0, 150, 110, 0.12); color: #4a5568; }
+        [data-theme="light"] .social-links a:hover { background: #009966; color: #ffffff; box-shadow: 0 0 30px rgba(0, 150, 110, 0.3); }
+        [data-theme="light"] footer { border-top-color: rgba(0, 150, 110, 0.12); color: #718096; }
+        [data-theme="light"] footer i, [data-theme="light"] footer .highlight { color: #009966; }
         [data-theme="light"] .footer-terminal { color: #a0aec0; }
     </style>
 </head>
@@ -345,8 +285,12 @@
                 <div class="terminal-bio">
                     <div class="line"><span class="prompt">$</span> whoami</div>
                     <div class="line"><span class="output">gerald@kernel-dev <span class="highlight-text">• Educator • Hardware &amp; Software • Kernel Builder • IT Consultant</span></span></div>
+<!--
+                    <div class="line"><span class="output">Geraldsays Enterprises <span class="highlight-text">• WhatsApp Business: 0556 181 986</span></span></div>
+-->            
                     <div class="line" style="margin-top: 6px;"><span class="prompt">$</span> cat ~/skills.txt</div>
-                    <div class="line"><span class="output"><span class="green">▸</span> Teaching &amp; Classroom Management</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> Classroom Teaching (short-term placements)</span></div>
+                    <div class="line"><span class="output"><span class="green">▸</span> Peer Tutoring &amp; Study Support</span></div>
                     <div class="line"><span class="output"><span class="green">▸</span> Educational Technology (EdTech)</span></div>
                     <div class="line"><span class="output"><span class="green">▸</span> Android Kernel &amp; AOSP</span></div>
                     <div class="line"><span class="output"><span class="green">▸</span> Custom ROM Porting (Redmi / Xiaomi)</span></div>
@@ -357,7 +301,7 @@
                     <div class="line"><span class="output"><span class="green">▸</span> VPS / VPN Solutions (WireGuard, OpenVPN)</span></div>
                     <div class="line"><span class="output"><span class="green">▸</span> <span style="color: #4facfe;">Laptop &amp; Mobile Hardware Repair (Component-Level)</span></span></div>
                     <div class="line" style="margin-top: 6px;"><span class="prompt">$</span> uptime</div>
-                    <div class="line"><span class="output">Educating, building, and shipping since 2010 🔥</span></div>
+                    <div class="line"><span class="output">Educating, building, and deploying since 2010 🔥</span></div>
                 </div>
 
                 <div class="btn-group">
@@ -405,8 +349,8 @@
                 <div class="project-card">
                     <i class="fas fa-clinic-medical"></i>
                     <h3>Facility Stores</h3>
-                    <p>Live inventory management PWA deployed at Adjiringanor Health Center. Tracks 290+ items across 5 departments with real-time alerts, cloud sync, and Excel import.</p>
-                    <span class="project-tag">HTML · PWA · Cloud Sync</span>
+                    <p>Live inventory management app deployed at Adjiringanor Health Center. Tracks 290+ items across 5 departments with real-time alerts, cloud sync, and Excel import.</p>
+                    <span class="project-tag">Inventory · Cloud Sync</span>
                     <a href="https://geraldsays.github.io/facility-stores" target="_blank" class="project-link">Live Demo →</a>
                 </div>
 
@@ -414,7 +358,7 @@
                     <i class="fas fa-chalkboard-teacher"></i>
                     <h3>Class 5A Classroom Manager</h3>
                     <p>Cloud-based classroom management system for primary school teachers — live roster, daily attendance with one-tap "mark all present", grade tracking, and categorized student notes. Includes a read-only parent portal.</p>
-                    <span class="project-tag">Firebase · JavaScript · EdTech</span>
+                    <span class="project-tag">JavaScript · EdTech</span>
                     <a href="https://geraldsays.github.io/thecms" target="_blank" class="project-link">Teacher App →</a>
                     <a href="https://geraldsays.github.io/parents" target="_blank" class="project-link" style="margin-left:6px;background:#0099ff;">Parent View →</a>
                 </div>
@@ -481,20 +425,28 @@
                     <a href="mailto:Geraldsays@gmail.com">Geraldsays@gmail.com</a>
                 </div>
                 <div class="contact-item">
-                    <i class="fab fa-github"></i>
-                    <a href="https://github.com/geraldsays" target="_blank">github.com/geraldsays</a>
+                    <i class="fas fa-phone"></i>
+                    <a href="tel:+233549956653">Call: 0549 956 653</a>
                 </div>
                 <div class="contact-item">
-                    <i class="fas fa-globe"></i>
+                    <i class="fab fa-whatsapp"></i>
+                    <a href="https://wa.me/233556181986?text=Hello%20Gerald%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect." target="_blank">WhatsApp: 0556 181 986</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-github"></i>
+                    <a href="https://geraldsays.github.io" target="_blank">geraldsays.github.io</a>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-briefcase"></i>
                     <span>Available for collabs &amp; consulting</span>
                 </div>
             </div>
             <div class="social-links">
-                <a href="https://github.com/geraldsays" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://geraldsays.github.io" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://wa.me/233556181986" target="_blank" title="WhatsApp Business"><i class="fab fa-whatsapp"></i></a>
                 <a href="#" class="soon" title="Coming soon" onclick="return false;"><i class="fab fa-linkedin-in"></i></a>
                 <a href="#" class="soon" title="Coming soon" onclick="return false;"><i class="fab fa-twitter"></i></a>
                 <a href="#" class="soon" title="Coming soon" onclick="return false;"><i class="fab fa-youtube"></i></a>
-                <a href="#" class="soon" title="Coming soon" onclick="return false;"><i class="fab fa-dev"></i></a>
             </div>
         </div>
     </section>
@@ -502,14 +454,28 @@
     <footer>
         <div class="container">
             <p>Built with <i class="fas fa-heart"></i> by <span class="highlight">Gerald Owusu</span> &bull; 2026</p>
+            <p class="footer-contact">
+                <i class="fas fa-phone" style="color: #00ffaa;"></i>
+                <a href="tel:+233549956653" style="color: #00ffaa;">0549 956 653</a>
+                &nbsp;·&nbsp;
+                <i class="fab fa-whatsapp" style="color: #25D366;"></i>
+                <a href="https://wa.me/233556181986" target="_blank" style="color: #25D366;">WhatsApp Business: 0556 181 986</a>
+            </p>
             <div class="footer-terminal">
                 <span style="color: #00ffaa;">$</span> echo "sudo rm -rf /problems" <span style="color: #555;"># living the dream</span>
             </div>
         </div>
     </footer>
 
+    <!-- WhatsApp floating button (Business number) -->
+    <a href="https://wa.me/233556181986?text=Hello%20Gerald%2C%20I%20found%20your%20portfolio%20and%20would%20like%20to%20connect."
+       class="whatsapp-float"
+       target="_blank"
+       aria-label="Chat on WhatsApp Business">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
     <script>
-        // Theme toggle
         const THEME_KEY = 'portfolio_theme';
         const themeToggle = document.getElementById('themeToggle');
         const themeLabel = document.getElementById('themeLabel');
@@ -573,4 +539,4 @@
         });
     </script>
 </body>
-    </html>
+</html>
